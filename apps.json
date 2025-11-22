@@ -1,0 +1,44 @@
+[
+  {
+    "id": "e1944bf8-c786-4b94-b8ed-b4b02c1a48c0",
+    "name": "Kill All Dockers",
+    "description": "kill em all!!!",
+    "command": "docker stop $(docker ps -q)",
+    "url": "http://localhost"
+  },
+  {
+    "id": "5ab11ad5-7572-4614-80f4-709256894539",
+    "name": "List Running Dockers",
+    "description": "listed em",
+    "command": "docker ps",
+    "url": "http://localhost"
+  },
+  {
+    "id": "9ed0d555-ad78-4e4f-bc59-3abfb8a2186a",
+    "name": "Docker Hello World!",
+    "description": "the docker hello world image",
+    "command": "docker run hello-world",
+    "url": "http://localhost"
+  },
+  {
+    "id": "2fa3018b-c6db-483a-81c0-2c011f692746",
+    "name": "Listening Ports",
+    "description": "running on system",
+    "command": "ss -tulnp | grep LISTEN",
+    "url": "http://localhost"
+  },
+  {
+    "id": "0234aa45-a697-4d25-9c81-a9b0ae1a54f8",
+    "name": "Memory Hungry",
+    "description": "lists memory hungry processses",
+    "command": "ps aux --sort=-%mem | head",
+    "url": "http://localhost"
+  },
+  {
+    "id": "7bc46e25-cd31-4bde-846c-63ca9493e723",
+    "name": "Gnome Calculator",
+    "description": "open calc",
+    "command": "gnome-calculator",
+    "url": "http://localhost"
+  }
+]
