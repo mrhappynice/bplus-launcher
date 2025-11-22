@@ -10,23 +10,32 @@
     <div class="container">
         <header>
             <h1>bplus🤷‍♂️️ launcher🚀️</h1>
+            <!-- NEW: Search Bar -->
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search apps... (Cmd/Ctrl+K)">
+            </div>
             <button id="add-btn" class="btn primary">+ Add App</button>
         </header>
+
+        <!-- NEW: Tags Filter Bar -->
+        <div id="tag-bar" class="tags-container">
+            <!-- Tags injected via JS -->
+        </div>
 
         <div id="app-grid" class="grid">
             <!-- Apps will be injected here -->
         </div>
     </div>
     
-            <div class="console-wrapper">
-            <div class="console-header">
-                <span>>_ Terminal Output</span>
-                <button id="clear-console" class="btn-small">Clear</button>
-            </div>
-            <div id="console-output" class="console-body">
-                <div class="log-entry text-muted">Ready...</div>
-            </div>
+    <div class="console-wrapper">
+        <div class="console-header">
+            <span>>_ Terminal Output</span>
+            <button id="clear-console" class="btn-small">Clear</button>
         </div>
+        <div id="console-output" class="console-body">
+            <div class="log-entry text-muted">Ready...</div>
+        </div>
+    </div>
 
     <!-- Modal for Add/Edit -->
     <div id="modal" class="modal hidden">
@@ -39,8 +48,8 @@
                     <input type="text" id="name" required placeholder="e.g. Docker Web">
                 </div>
                 <div class="form-group">
-                    <label>Description</label>
-                    <input type="text" id="description" placeholder="What does it do?">
+                    <label>Description (Use #tags to categorize)</label>
+                    <input type="text" id="description" placeholder="e.g. Web server container #docker #web">
                 </div>
                 <div class="form-group">
                     <label>Command</label>

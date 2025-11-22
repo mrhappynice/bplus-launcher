@@ -212,3 +212,77 @@ h1 {
     font-size: 0.8rem;
 }
 .btn-small:hover { background: #555; }
+
+.search-container {
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+#search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    background: #0f1520;
+    border: 1px solid #333;
+    color: var(--text-main);
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+#search-input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+/* Tag Filters (Top Bar) */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tag-filter {
+    padding: 5px 12px;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 20px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.tag-filter:hover {
+    border-color: var(--text-muted);
+}
+
+.tag-filter.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Badges inside Cards */
+.card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    font-size: 0.75rem;
+    background: #2a2a2a;
+    color: #888;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+/* Adjust header for search bar */
+header {
+    flex-wrap: wrap; 
+    gap: 15px;
+}
+
