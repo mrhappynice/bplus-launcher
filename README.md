@@ -17,6 +17,10 @@ It allows you to configure commands (like Docker containers or shell scripts) an
    ```bash
    cargo build --release
    ```
+   Or just get the compiled binary, for Ubuntu 22+(glibc 2.35+):
+   ```sh
+   chmod +x get-bin.sh && ./get-bin.sh
+   ```
 3. **Run:**
    ```sh
    ./bplus-launcher
