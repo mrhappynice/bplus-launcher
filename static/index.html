@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bplus🤷‍♂️️ launcher🚀️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>bplus🤷‍♂️️ launcher🚀️</h1>
+            <button id="add-btn" class="btn primary">+ Add App</button>
+        </header>
+
+        <div id="app-grid" class="grid">
+            <!-- Apps will be injected here -->
+        </div>
+    </div>
+    
+            <div class="console-wrapper">
+            <div class="console-header">
+                <span>>_ Terminal Output</span>
+                <button id="clear-console" class="btn-small">Clear</button>
+            </div>
+            <div id="console-output" class="console-body">
+                <div class="log-entry text-muted">Ready...</div>
+            </div>
+        </div>
+
+    <!-- Modal for Add/Edit -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="modal-title">Add Application</h2>
+            <form id="app-form">
+                <input type="hidden" id="app-id">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="name" required placeholder="e.g. Docker Web">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" id="description" placeholder="What does it do?">
+                </div>
+                <div class="form-group">
+                    <label>Command</label>
+                    <input type="text" id="command" required placeholder="docker compose up -d">
+                    <small>Shell command to execute.</small>
+                </div>
+                <div class="form-group">
+                    <label>URL</label>
+                    <input type="text" id="url" required placeholder="http://localhost:8080">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="cancel-btn" class="btn">Cancel</button>
+                    <button type="submit" class="btn primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
