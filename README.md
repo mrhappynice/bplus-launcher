@@ -12,11 +12,14 @@ It allows you to configure commands (like Docker containers or shell scripts) an
 
 1. **Build the backend:**
    ```bash
+   chmod +x build.sh && ./build.sh
+   ```
+   ```bash
    cargo build --release
    ```
-2. **Run:**
+3. **Run:**
    ```sh
    ./bplus-launcher
    ```
-3. **Open in browser:**
+4. **Open in browser:**
    http://localhost:3000
