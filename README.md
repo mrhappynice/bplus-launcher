@@ -23,3 +23,5 @@ It allows you to configure commands (like Docker containers or shell scripts) an
    ```
 4. **Open in browser:**
    http://localhost:3000
+
+Examples in apps.json, edit file or use Add Apps button in UI.
