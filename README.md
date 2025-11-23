@@ -12,6 +12,11 @@ Launch cards for bplus🤷‍♂️️ series of apps. Install, launch, manage W
   ```
   enter ```bplus-launcher``` folder and run: ```./bplus-launcher``` - click get bplus apps for auto install
 
+  Termux install:
+  ```sh
+  curl -fsSL https://raw.githubusercontent.com/mrhappynice/bplus-launcher/main/termux-install.sh | sh
+  ```
+
 ## Prerequisites
 
 - [Rust](https://www.rust-lang.org/tools/install) installed. dev-con is also available here and on [MHN Docker Hub](https://hub.docker.com/u/mrhappynice)
