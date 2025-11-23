@@ -39,6 +39,13 @@ download "${JSON_URL}" "${JSON_NAME}"
 echo "Making '${BINARY_NAME}' executable…"
 chmod +x "${BINARY_NAME}"
 
+echo "Getting UI files.."
+mkdir static
+cd static
+download index.html https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/static/index.html
+download script.js https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/static/script.js
+download style.css https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/static/style.css
+
 echo "Done ✅"
 echo
 echo "Files installed to: $(pwd)"
