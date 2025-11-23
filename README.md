@@ -14,7 +14,7 @@ Launch cards for bplus🤷‍♂️️ series of apps. Install, launch, manage W
 
   Termux install:
 - ```sh
-  curl -fsSL https://raw.githubusercontent.com/mrhappynice/bplus-launcher/main/termux-install.sh | sh
+  curl -fsSL https://raw.githubusercontent.com/mrhappynice/bplus-launcher/main/termux-install.sh | bash
   ```
 
 ## Prerequisites
