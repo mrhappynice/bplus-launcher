@@ -4,6 +4,7 @@ const form = document.getElementById('app-form');
 const grid = document.getElementById('app-grid');
 const searchInput = document.getElementById('search-input');
 const tagBar = document.getElementById('tag-bar');
+const terminalInput = document.getElementById('terminal-input');
 
 let isEditing = false;
 let allApps = []; // Store all data locally for filtering
@@ -14,20 +15,39 @@ document.addEventListener('DOMContentLoaded', fetchApps);
 
 // --- Event Listeners ---
 
-// Search
-searchInput.addEventListener('input', (e) => {
-    searchQuery = e.target.value.toLowerCase();
-    renderApps(); // Re-render with filter
-});
+// 1. Search Input
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase();
+        renderApps();
+    });
+}
 
-// Keyboard Shortcut for Search (Cmd/Ctrl + K)
+// 2. Keyboard Shortcut (Cmd/Ctrl + K for Search)
 document.addEventListener('keydown', (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
-        searchInput.focus();
+        if (searchInput) searchInput.focus();
     }
 });
 
+// 3. Terminal Input (Enter Key)
+if (terminalInput) {
+    terminalInput.addEventListener('keydown', async (e) => {
+        if (e.key === 'Enter') {
+            const cmd = terminalInput.value.trim();
+            if (cmd) {
+                terminalInput.value = ''; // Clear input
+                terminalInput.disabled = true; // Disable while running
+                await runAdHocCommand(cmd);
+                terminalInput.disabled = false;
+                terminalInput.focus();
+            }
+        }
+    });
+}
+
+// 4. Modal & Console Controls
 document.getElementById('add-btn').addEventListener('click', () => openModal());
 document.getElementById('cancel-btn').addEventListener('click', closeModal);
 
@@ -35,6 +55,7 @@ document.getElementById('clear-console').addEventListener('click', () => {
     document.getElementById('console-output').innerHTML = '<div class="log-entry text-muted">Console cleared.</div>';
 });
 
+// 5. Form Submission (Create/Update)
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = {
@@ -62,13 +83,17 @@ form.addEventListener('submit', async (e) => {
     }
 });
 
-// --- Logic ---
+// --- Core Logic ---
 
 async function fetchApps() {
-    const res = await fetch(API_URL);
-    allApps = await res.json(); // Save to global variable
-    buildTags();
-    renderApps();
+    try {
+        const res = await fetch(API_URL);
+        allApps = await res.json();
+        buildTags();
+        renderApps();
+    } catch (err) {
+        console.error("Failed to fetch apps:", err);
+    }
 }
 
 function buildTags() {
@@ -80,6 +105,7 @@ function buildTags() {
     });
 
     // 2. Render Tag Bar
+    if (!tagBar) return;
     tagBar.innerHTML = '';
     
     // Sort tags alphabetically
@@ -106,32 +132,32 @@ function buildTags() {
 }
 
 function extractTags(text) {
-    // Finds #word patterns
+    if (!text) return [];
     const match = text.match(/#[\w-]+/g);
     if (!match) return [];
     return match.map(t => t.substring(1).toLowerCase()); // remove # and lowercase
 }
 
 function cleanDescription(text) {
-    // Removes tags from description for cleaner display
-    if(!text) return '';
+    if (!text) return '';
     return text.replace(/#[\w-]+/g, '').trim();
 }
 
 function renderApps() {
     grid.innerHTML = '';
 
-    // Filter Logic
     const filtered = allApps.filter(app => {
+        // Safety: Hide the phantom app if it got stuck in the DB
+        if (app.name === '__TEMP_CMD__') return false;
+
         const appTags = extractTags(app.description || '');
         
-        // 1. Search Text Match (Name or Description)
+        // 1. Search Text Match
         const matchesSearch = !searchQuery || 
             app.name.toLowerCase().includes(searchQuery) || 
             (app.description || '').toLowerCase().includes(searchQuery);
 
-        // 2. Tag Match (If tags selected, app must have AT LEAST ONE of the selected tags)
-        // Alternatively: use .every() if you want strict AND matching
+        // 2. Tag Match
         const matchesTags = activeTags.size === 0 || 
             appTags.some(t => activeTags.has(t));
 
@@ -145,7 +171,6 @@ function renderApps() {
         const card = document.createElement('div');
         card.className = 'card';
         
-        // Generate Badge HTML
         const badgeHtml = appTags.map(t => `<span class="badge">${t}</span>`).join('');
 
         card.innerHTML = `
@@ -174,8 +199,97 @@ function renderApps() {
     }
 }
 
-// Standard CRUD functions (launchApp, editApp, etc) remain mostly same
-// but editApp handles the raw description (with tags)
+// --- Command Execution Logic ---
+
+// 1. Standard App Launch
+async function launchApp(id) {
+    const consoleDiv = document.getElementById('console-output');
+    const loadingId = Date.now();
+    consoleDiv.innerHTML += `<div id="loading-${loadingId}" class="log-entry text-muted">Executing command...</div>`;
+    consoleDiv.scrollTop = consoleDiv.scrollHeight;
+
+    try {
+        const res = await fetch(`${API_URL}/${id}/launch`, { method: 'POST' });
+        const data = await res.json(); 
+        
+        const loader = document.getElementById(`loading-${loadingId}`);
+        if(loader) loader.remove();
+
+        logOutput(data.command, data.stdout, data.stderr, data.success, data.message);
+
+    } catch (err) {
+        console.error(err);
+        const loader = document.getElementById(`loading-${loadingId}`);
+        if(loader) loader.remove();
+        consoleDiv.innerHTML += `<div class="log-entry log-err">Error: ${escapeHtml(err.toString())}</div>`;
+    }
+}
+
+// 2. Ad-Hoc Terminal Command ("Phantom App")
+async function runAdHocCommand(command) {
+    const consoleDiv = document.getElementById('console-output');
+    
+    // Visual feedback immediately
+    consoleDiv.innerHTML += `<div class="log-entry"><span class="log-cmd">$ ${escapeHtml(command)}</span> <span class="text-muted">(running...)</span></div>`;
+    consoleDiv.scrollTop = consoleDiv.scrollHeight;
+
+    try {
+        // A. Create Temporary App
+        const createRes = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name: "__TEMP_CMD__", 
+                description: "Ad-hoc command",
+                command: command,
+                url: "http://localhost"
+            })
+        });
+        
+        const tempApp = await createRes.json();
+
+        // B. Launch it
+        const launchRes = await fetch(`${API_URL}/${tempApp.id}/launch`, { method: 'POST' });
+        const data = await launchRes.json();
+
+        // C. Log Output (We don't reprint the command line to keep it looking like a terminal)
+        let html = `<div class="log-entry">`;
+        if (data.stdout) html += `<div class="log-out">${escapeHtml(data.stdout)}</div>`;
+        if (data.stderr) html += `<div class="log-err">${escapeHtml(data.stderr)}</div>`;
+        if (!data.success) html += `<div class="log-err">[Exit Status: Failed] ${escapeHtml(data.message)}</div>`;
+        html += `</div>`;
+        
+        consoleDiv.innerHTML += html;
+        consoleDiv.scrollTop = consoleDiv.scrollHeight;
+
+        // D. Clean up (Delete the temp app)
+        await fetch(`${API_URL}/${tempApp.id}`, { method: 'DELETE' });
+
+    } catch (err) {
+        consoleDiv.innerHTML += `<div class="log-entry log-err">Error executing ad-hoc command: ${escapeHtml(err.toString())}</div>`;
+    }
+}
+
+// Helper to format log output for standard launches
+function logOutput(cmd, stdout, stderr, success, msg) {
+    const consoleDiv = document.getElementById('console-output');
+    let html = `<div class="log-entry">`;
+    html += `<div class="log-cmd">$ ${escapeHtml(cmd)}</div>`;
+    
+    if (stdout) html += `<div class="log-out">${escapeHtml(stdout)}</div>`;
+    if (stderr) html += `<div class="log-err">${escapeHtml(stderr)}</div>`;
+    
+    if (!success) {
+        html += `<div class="log-err">[Exit Status: Failed] ${escapeHtml(msg)}</div>`;
+    }
+    
+    html += `</div>`;
+    consoleDiv.innerHTML += html;
+    consoleDiv.scrollTop = consoleDiv.scrollHeight;
+}
+
+// --- Helper Functions ---
+
 window.editApp = (app) => openModal(app); 
 
 window.deleteApp = async (id) => {
@@ -192,7 +306,7 @@ function openModal(app = null) {
     if (app) {
         document.getElementById('app-id').value = app.id;
         document.getElementById('name').value = app.name;
-        // Note: We put the FULL description (with tags) back into the edit box
+        // Use raw description (with tags) for editing
         document.getElementById('description').value = app.description || '';
         document.getElementById('command').value = app.command;
         document.getElementById('url').value = app.url;
@@ -204,36 +318,6 @@ function openModal(app = null) {
 
 function closeModal() {
     modal.classList.add('hidden');
-}
-
-// Re-using existing launchApp code...
-async function launchApp(id) {
-    const consoleDiv = document.getElementById('console-output');
-    const loadingId = Date.now();
-    consoleDiv.innerHTML += `<div id="loading-${loadingId}" class="log-entry text-muted">Executing command...</div>`;
-    consoleDiv.scrollTop = consoleDiv.scrollHeight;
-
-    try {
-        const res = await fetch(`${API_URL}/${id}/launch`, { method: 'POST' });
-        const data = await res.json(); 
-        const loader = document.getElementById(`loading-${loadingId}`);
-        if(loader) loader.remove();
-
-        let html = `<div class="log-entry">`;
-        html += `<div class="log-cmd">$ ${escapeHtml(data.command)}</div>`;
-        if (data.stdout) html += `<div class="log-out">${escapeHtml(data.stdout)}</div>`;
-        if (data.stderr) html += `<div class="log-err">${escapeHtml(data.stderr)}</div>`;
-        if (!data.success) html += `<div class="log-err">[Exit Status: Failed] ${escapeHtml(data.message)}</div>`;
-        html += `</div>`;
-
-        consoleDiv.innerHTML += html;
-        consoleDiv.scrollTop = consoleDiv.scrollHeight;
-    } catch (err) {
-        console.error(err);
-        const loader = document.getElementById(`loading-${loadingId}`);
-        if(loader) loader.remove();
-        consoleDiv.innerHTML += `<div class="log-entry log-err">Error: ${escapeHtml(err.toString())}</div>`;
-    }
 }
 
 function escapeHtml(text) {
