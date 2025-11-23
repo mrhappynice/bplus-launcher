@@ -13,7 +13,7 @@ Launch cards for bplus🤷‍♂️️ series of apps. Install, launch, manage W
   enter ```bplus-launcher``` folder and run: ```./bplus-launcher``` - click get bplus apps for auto install
 
   Termux install:
-  ```sh
+- ```sh
   curl -fsSL https://raw.githubusercontent.com/mrhappynice/bplus-launcher/main/termux-install.sh | sh
   ```
 
