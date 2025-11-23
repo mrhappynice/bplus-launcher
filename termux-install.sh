@@ -9,6 +9,12 @@ JSON_URL="https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/apps
 INSTALL_DIR="bplus-launcher"
 BINARY_NAME="bplus-launcher"
 JSON_NAME="apps.json"
+INDEX_NAME="index.html"
+SCRIPT_NAME="script.js"
+CSS_NAME="style.css"
+INDEX_URL="https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/static/index.html"
+SCRIPT_URL="https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/static/script.js"
+CSS_URL="https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/static/style.css"
 
 # --- helpers ---
 have() { command -v "$1" >/dev/null 2>&1; }
@@ -42,9 +48,9 @@ chmod +x "${BINARY_NAME}"
 echo "Getting UI files.."
 mkdir static
 cd static
-download index.html https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/static/index.html
-download script.js https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/static/script.js
-download style.css https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/static/style.css
+download "${INDEX_URL}" "${INDEX_NAME}" 
+download "${SCRIPT_URL}" "${SCRIPT_NAME}" 
+download "${CSS_URL}" "${CSS_NAME}" 
 
 echo "Done ✅"
 echo
