@@ -7,7 +7,10 @@ Launch cards for bplus🤷‍♂️️ series of apps. Install, launch, manage W
 
 ## Quick Start🏁
 
-- 
+- ```sh 
+  curl -fsSL https://raw.githubusercontent.com/mrhappynice/bplus-launcher/main/install.sh | bash
+  ```
+  enter ```bplus-launcher``` folder and run: ```./bplus-launcher``` - click get bplus apps for auto install
 
 ## Prerequisites
 
