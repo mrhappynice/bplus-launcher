@@ -28,6 +28,6 @@ Launch cards for bplus🤷‍♂️️ series of apps. Install, launch, manage W
    ./bplus-launcher
    ```
 4. **Open in browser:**
-   http://localhost:3000
+   http://localhost:5660
 
 Examples in apps.json, you can use the Add Apps button in UI.
