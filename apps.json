@@ -31,7 +31,7 @@
     "id": "0234aa45-a697-4d25-9c81-a9b0ae1a54f8",
     "name": "Memory Hungry",
     "description": "lists memory hungry processses #util",
-    "command": "ps aux --sort=-%mem | head",
+    "command": "ps -eo pid,comm,%mem --sort=-%mem | head",
     "url": "http://localhost"
   },
   {
