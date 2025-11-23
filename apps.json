@@ -73,7 +73,7 @@
     "id": "b7d06a42-40fb-4ef4-a45a-cb17c2763c93",
     "name": "bplus running apps",
     "description": "list running apps #bplus #mhn",
-    "command": "ps -aux | grep bplus",
+    "command": "ps -eo pid,comm | grep bplus",
     "url": "http://localhost"
   }
 ]
