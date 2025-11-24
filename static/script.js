@@ -15,6 +15,35 @@ document.addEventListener('DOMContentLoaded', fetchApps);
 
 // --- Event Listeners ---
 
+const consoleWrapper = document.getElementById('console-wrapper');
+const consoleToggle = document.getElementById('console-toggle');
+const minimizeBtn = document.getElementById('minimize-console');
+
+// Function to toggle visibility
+function toggleConsoleVisibility(show) {
+    if (show) {
+        consoleWrapper.classList.remove('minimized');
+        consoleToggle.classList.add('hidden');
+        // Auto-focus input when opening
+        setTimeout(() => {
+            const termInput = document.getElementById('terminal-input');
+            if(termInput) termInput.focus();
+        }, 300);
+    } else {
+        consoleWrapper.classList.add('minimized');
+        consoleToggle.classList.remove('hidden');
+    }
+}
+
+// Event Listeners
+if (consoleToggle) {
+    consoleToggle.addEventListener('click', () => toggleConsoleVisibility(true));
+}
+
+if (minimizeBtn) {
+    minimizeBtn.addEventListener('click', () => toggleConsoleVisibility(false));
+}
+
 // 1. Search Input
 if (searchInput) {
     searchInput.addEventListener('input', (e) => {

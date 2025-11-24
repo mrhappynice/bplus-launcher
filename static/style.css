@@ -160,14 +160,14 @@ h1 {
     margin-top: 20px;
 }
 
-.console-wrapper {
+/* .console-wrapper {
     margin-top: 40px;
     border: 1px solid #333;
     border-radius: var(--radius);
     background-color: #000;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
+} */
 
 .console-header {
     background-color: #1e1e1e;
@@ -315,4 +315,113 @@ header {
 #terminal-input::placeholder {
     color: #444;
     font-style: italic;
+}
+
+/* Floating Action Button (Visible when terminal is minimized) */
+#console-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-family: monospace;
+    box-shadow: 0 4px 15px rgba(0,255,0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+#console-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,255,0, 0.4);
+}
+
+/* The Floating Window */
+.console-wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 600px; /* Fixed width for desktop */
+    max-width: 90vw;
+    height: 400px;
+    z-index: 1999; /* Just below the toggle button if they overlapped, but we swap visibility */
+    
+    /* Visuals */
+    background-color: rgba(18, 18, 18, 0.95); /* Slight transparency */
+    backdrop-filter: blur(10px);
+    border: 1px solid #333;
+    border-radius: var(--radius);
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.8);
+    
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
+    /* Animation State */
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.3s;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Minimized State (Hidden) */
+.console-wrapper.minimized {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    pointer-events: none; /* Prevent clicking while hidden */
+}
+
+/* Header Adjustments */
+.console-header {
+    background-color: #1e1e1e;
+    padding: 8px 15px;
+    cursor: default;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    flex-shrink: 0;
+}
+
+.window-controls {
+    display: flex;
+    gap: 10px;
+}
+
+/* Minimize Button (Dash) */
+.btn-minimize {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 0.5;
+    cursor: pointer;
+    padding: 0 5px;
+}
+.btn-minimize:hover { color: var(--primary); }
+
+/* Body expands to fill remaining height */
+.console-body {
+    flex-grow: 1; 
+    padding: 15px;
+    overflow-y: auto;
+    border-bottom: 1px solid #333; /* Separator for input */
+}
+
+/* Input area pinned to bottom */
+.console-input-wrapper {
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px 15px;
+    flex-shrink: 0;
+}
+
+/* Responsive: Full width on mobile */
+@media (max-width: 650px) {
+    .console-wrapper {
+        width: 95vw;
+        right: 2.5vw;
+        bottom: 10px;
+    }
 }

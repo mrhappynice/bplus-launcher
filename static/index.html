@@ -27,17 +27,28 @@
         </div>
     </div>
     
-    <div class="console-wrapper">
+    <button id="console-toggle" class="btn primary hidden">
+        <span>>_</span> Terminal
+    </button>
+
+    <!-- FLOATING CONSOLE WINDOW -->
+    <div id="console-wrapper" class="console-wrapper">
         <div class="console-header">
             <span>>_ Terminal Output</span>
-            <button id="clear-console" class="btn-small">Clear</button>
+            <div class="window-controls">
+                <button id="clear-console" class="btn-small">Clear</button>
+                <!-- Minimize Button -->
+                <button id="minimize-console" class="btn-minimize" title="Minimize">_</button>
+            </div>
         </div>
-                <div class="console-input-wrapper">
-            <span class="prompt">$</span>
-            <input type="text" id="terminal-input" autocomplete="off" placeholder="Type a command and hit Enter (e.g. ls -la)...">
-        </div>
+        
         <div id="console-output" class="console-body">
             <div class="log-entry text-muted">Ready...</div>
+        </div>
+        
+        <div class="console-input-wrapper">
+            <span class="prompt">$</span>
+            <input type="text" id="terminal-input" autocomplete="off" placeholder="Run command...">
         </div>
     </div>
 
