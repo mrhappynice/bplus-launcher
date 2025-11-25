@@ -6,11 +6,12 @@ It allows you to configure commands (like Docker containers or shell scripts) an
 Launch cards for bplus🤷‍♂️️ series of apps, docker containers, and other system utilities. Install, launch, manage WIP* added: [Cnidarian](https://github.com/mrhappynice/cnidarian), [streamdlrs-gui](https://github.com/mrhappynice/bplus-streamdlrs-gui), and [searchrs](https://github.com/mrhappynice/bplus-searchrs) cards
 
 ## Quick Start🏁
+*Assumes git, docker, ffmpeg, general utilities installed. For termux pip install yt-dlp for usage.(working on full termux auto-install script) 
 
 - ```sh 
   curl -fsSL https://raw.githubusercontent.com/mrhappynice/bplus-launcher/main/install.sh | bash
   ```
-  enter ```bplus-launcher``` folder and run: ```./bplus-launcher``` - click get bplus apps for auto install
+  enter ```bplus-launcher``` folder and run: ```./bplus-launcher``` - click Launch on the get bplus apps card for auto install of the cards mentioned above.
 
   Termux install:
 - ```sh
@@ -19,7 +20,7 @@ Launch cards for bplus🤷‍♂️️ series of apps, docker containers, and ot
 
 ## Prerequisites
 
-- [Rust](https://www.rust-lang.org/tools/install) installed. dev-con is also available here and on [MHN Docker Hub](https://hub.docker.com/u/mrhappynice)
+- [Rust](https://www.rust-lang.org/tools/install) installed. My dev-con image to build this and other projects is available in the repo and on [MHN Docker Hub](https://hub.docker.com/u/mrhappynice)
 - WIP compiled binaries in Releases section
 
 ## Setup & Run
