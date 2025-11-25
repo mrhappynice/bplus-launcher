@@ -31,10 +31,6 @@ Launch cards for bplus🤷‍♂️️ series of apps, docker containers, and ot
    ```bash
    cargo build --release
    ```
-   Or just get the compiled binary, for Ubuntu 22+(glibc 2.35+):
-   ```sh
-   chmod +x get-bin.sh && ./get-bin.sh
-   ```
 3. **Run:**
    ```sh
    ./bplus-launcher
