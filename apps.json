@@ -52,7 +52,7 @@
     "id": "06cf6259-3015-41d1-b643-bfe3e544f6cf",
     "name": "Get bplus apps",
     "description": "grab the bplus series of apps, currently* Cnidarian, streamdlrs-gui, and searchrs(set your keys in .env) #bplus #mhn",
-    "command": "git clone https://github.com/mrhappynice/bplus-searchrs.git && git clone https://github.com/mrhappynice/bplus-streamdlrs-gui.git && curl -L -o bplus-searchrs/bplus-searchrs https://github.com/mrhappynice/bplus-searchrs/releases/download/v0.4.1.1/bplus-searchrs && curl -L -o bplus-streamdlrs-gui/bplus-streamdlrs-gui https://github.com/mrhappynice/bplus-streamdlrs-gui/releases/download/working/bplus-streamdlrs-gui && chmod +x bplus-searchrs/bplus-searchrs && chmod +x bplus-streamdlrs-gui/bplus-streamdlrs-gui && curl -L -o bplus-streamdlrs-gui/yt-dlp_linux https://github.com/yt-dlp/yt-dlp/releases/download/2025.11.12/yt-dlp_linux && chmod +x bplus-streamdlrs-gui/yt-dlp_linux && docker pull mrhappynice/cnidarian:latest",
+    "command": "git clone https://github.com/mrhappynice/bplus-searchrs.git && git clone https://github.com/mrhappynice/bplus-streamdlrs-gui.git && curl -L -o bplus-searchrs/bplus-searchrs https://github.com/mrhappynice/bplus-searchrs/releases/download/v0.4.1.2/bplus-searchrs && curl -L -o bplus-streamdlrs-gui/bplus-streamdlrs-gui https://github.com/mrhappynice/bplus-streamdlrs-gui/releases/download/working/bplus-streamdlrs-gui && chmod +x bplus-searchrs/bplus-searchrs && chmod +x bplus-streamdlrs-gui/bplus-streamdlrs-gui && curl -L -o bplus-streamdlrs-gui/yt-dlp_linux https://github.com/yt-dlp/yt-dlp/releases/download/2025.11.12/yt-dlp_linux && chmod +x bplus-streamdlrs-gui/yt-dlp_linux && docker pull mrhappynice/cnidarian:latest",
     "url": "http://localhost"
   },
   {
