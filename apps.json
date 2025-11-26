@@ -50,21 +50,21 @@
   },
   {
     "id": "06cf6259-3015-41d1-b643-bfe3e544f6cf",
-    "name": "Get bplus apps",
+    "name": "🖧 Get bplus🤷‍♂️️ apps",
     "description": "grab the bplus series of apps, currently* Cnidarian, streamdlrs-gui, and searchrs(set your keys in .env) #bplus #mhn",
     "command": "git clone https://github.com/mrhappynice/bplus-searchrs.git && git clone https://github.com/mrhappynice/bplus-streamdlrs-gui.git && curl -L -o bplus-searchrs/bplus-searchrs https://github.com/mrhappynice/bplus-searchrs/releases/download/v0.4.1.2/bplus-searchrs && curl -L -o bplus-streamdlrs-gui/bplus-streamdlrs-gui https://github.com/mrhappynice/bplus-streamdlrs-gui/releases/download/working/bplus-streamdlrs-gui && chmod +x bplus-searchrs/bplus-searchrs && chmod +x bplus-streamdlrs-gui/bplus-streamdlrs-gui && curl -L -o bplus-streamdlrs-gui/yt-dlp_linux https://github.com/yt-dlp/yt-dlp/releases/download/2025.11.12/yt-dlp_linux && chmod +x bplus-streamdlrs-gui/yt-dlp_linux && docker pull mrhappynice/cnidarian:latest",
     "url": "http://localhost"
   },
   {
     "id": "a759e5bb-da34-4417-874c-50b59d3f390e",
-    "name": "Launch bplus-streamdlrs-gui",
+    "name": "▶️ Launch bplus-streamdlrs-gui",
     "description": "download streaming media from... platforms #bplus #mhn",
     "command": "( cd ./bplus-streamdlrs-gui && nohup ./bplus-streamdlrs-gui >/tmp/bplus-streamdlrs.log 2>&1 < /dev/null & )",
     "url": "http://localhost:3000"
   },
   {
     "id": "40c351c2-740b-4bf6-8bc8-77cdeeec3b25",
-    "name": "Launch bplus-searchrs",
+    "name": "🔎 Launch bplus-searchrs",
     "description": "LLM powered web search, built-in and connection to SearXNG #bplus #mhn",
     "command": "( cd ./bplus-searchrs && nohup ./bplus-searchrs >/tmp/bplus-searchrs.log 2>&1 < /dev/null & )",
     "url": "http://localhost:3001"
@@ -73,7 +73,7 @@
     "id": "b7d06a42-40fb-4ef4-a45a-cb17c2763c93",
     "name": "bplus running apps",
     "description": "list running apps #bplus #mhn",
-    "command": "ps -eo pid,comm | grep bplus",
+    "command": "ps -eo pid,comm | grep bplus && echo \"\" && echo \"Type: pkill <bplus-suffix> ex. pkill searchrs to stop bplus-searchrs\"",
     "url": "http://localhost"
   }
 ]
