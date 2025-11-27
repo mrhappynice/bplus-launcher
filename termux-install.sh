@@ -51,6 +51,7 @@ cd static
 download "${INDEX_URL}" "${INDEX_NAME}" 
 download "${SCRIPT_URL}" "${SCRIPT_NAME}" 
 download "${CSS_URL}" "${CSS_NAME}" 
+cd bplus-launcher
 
 echo "Done ✅"
 echo
