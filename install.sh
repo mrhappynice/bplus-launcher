@@ -62,3 +62,4 @@ echo " - ${JSON_NAME}"
 echo
 echo "Run it with:"
 echo "  ./$(printf %q "${BINARY_NAME}")"
+cd bplus-launcher
