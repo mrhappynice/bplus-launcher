@@ -4,7 +4,7 @@
 
 set -Eeuo pipefail
 
-BINARY_URL="https://github.com/mrhappynice/bplus-launcher/releases/download/v0.2.5/bplus-launcher-termux"
+BINARY_URL="https://github.com/mrhappynice/bplus-launcher/releases/download/v0.2.6/bplus-launcher-termux"
 JSON_URL="https://github.com/mrhappynice/bplus-launcher/raw/refs/heads/main/apps.json"
 INSTALL_DIR="bplus-launcher"
 BINARY_NAME="bplus-launcher"
