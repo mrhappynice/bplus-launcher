@@ -1,0 +1,79 @@
+[
+  {
+    "id": "0234aa45-a697-4d25-9c81-a9b0ae1a54f8",
+    "name": "Memory Hungry",
+    "description": "lists memory hungry processses #util",
+    "command": "ps -eo pid,comm,%mem --sort=-%mem | head",
+    "url": "http://localhost"
+  },
+  {
+    "id": "06cf6259-3015-41d1-b643-bfe3e544f6cf",
+    "name": "Get bplus apps",
+    "description": "grab the bplus series of apps, currently* Cnidarian, streamdlrs-gui, and searchrs(set your keys in .env) #bplus #mhn",
+    "command": "git clone https://github.com/mrhappynice/bplus-searchrs.git && git clone https://github.com/mrhappynice/bplus-streamdlrs-gui.git && curl -L -o bplus-searchrs/bplus-searchrs https://github.com/mrhappynice/bplus-searchrs/releases/download/v0.3/bplus-searchrs && curl -L -o bplus-streamdlrs-gui/bplus-streamdlrs-gui https://github.com/mrhappynice/bplus-streamdlrs-gui/releases/download/working/bplus-streamdlrs-gui-termux && chmod +x bplus-searchrs/bplus-searchrs && chmod +x bplus-streamdlrs-gui/bplus-streamdlrs-gui ",
+    "url": "http://localhost"
+  },
+  {
+    "id": "a759e5bb-da34-4417-874c-50b59d3f390e",
+    "name": "Launch bplus-streamdlrs-gui",
+    "description": "download streaming media from... platforms #bplus #mhn",
+    "command": "( cd ./bplus-streamdlrs-gui && nohup ./bplus-streamdlrs-gui >streamdlrs.log 2>&1 < /dev/null & )",
+    "url": "http://localhost:3000"
+  },
+  {
+    "id": "40c351c2-740b-4bf6-8bc8-77cdeeec3b25",
+    "name": "Launch bplus-searchrs",
+    "description": "LLM powered web search, built-in and connection to SearXNG #bplus #mhn",
+    "command": "( cd ./bplus-searchrs && nohup ./bplus-searchrs >searchrs.log 2>&1 < /dev/null & )",
+    "url": "http://localhost:3001"
+  },
+  {
+    "id": "b7d06a42-40fb-4ef4-a45a-cb17c2763c93",
+    "name": "bplus running apps",
+    "description": "list running apps #bplus #mhn",
+    "command": "ps -eo pid,comm | grep bplus",
+    "url": "http://localhost"
+  },
+  {
+    "id": "91766084-4e47-49b9-9e81-ca97b3331afe",
+    "name": "__TEMP_CMD__",
+    "description": "Ad-hoc command",
+    "command": "pkill bplus",
+    "url": "http://localhost"
+  },
+  {
+    "id": "7be3c710-e7eb-4c42-a37d-8a3cbe841c45",
+    "name": "__TEMP_CMD__",
+    "description": "Ad-hoc command",
+    "command": "pkill bplus",
+    "url": "http://localhost"
+  },
+  {
+    "id": "d59a7b16-c329-42ea-82cb-2ffab3a1438d",
+    "name": "__TEMP_CMD__",
+    "description": "Ad-hoc command",
+    "command": "pkill bplus",
+    "url": "http://localhost"
+  },
+  {
+    "id": "25f5799b-233c-41c6-9f5b-d1d9a6afc4c9",
+    "name": "Install llama.cpp [termux]",
+    "description": "you may install llama-cpp-backend-x, x can = vulkan or opencl",
+    "command": "pkg install -y llama-cpp",
+    "url": "http://localhost"
+  },
+  {
+    "id": "3fce2be0-b89c-4fea-a0f2-193d4f3ca2d3",
+    "name": "Run llama.cpp server",
+    "description": "pick your hf model with -hf or local dir with -m #llama",
+    "command": "( nohup  llama-server -hf unsloth/Qwen3-0.6B-GGUF:Q8_0 -ngl 99 -c 3888 --port 1234 > llamaserver.log 2>&1 < /dev/null & )",
+    "url": "http://localhost:1234"
+  },
+  {
+    "id": "3325f69f-d6de-4f0b-85d0-73fc854760b8",
+    "name": "__TEMP_CMD__",
+    "description": "Ad-hoc command",
+    "command": "pkill bplus",
+    "url": "http://localhost"
+  }
+]
