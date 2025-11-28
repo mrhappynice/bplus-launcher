@@ -69,6 +69,20 @@
     "command": "( nohup  llama-server -hf unsloth/Qwen3-0.6B-GGUF:Q8_0 -ngl 99 -c 3888 --port 1234 > llamaserver.log 2>&1 < /dev/null & )",
     "url": "http://localhost:1234"
   },
+    {
+    "id": "6e9ba7c0-ad85-48b8-a51c-f123c6c60367",
+    "name": "🖧 Get Life Manager",
+    "description": "dl lifeman app from mhn github, #install #life",
+    "command": "git clone https://github.com/mrhappynice/lifeman.git && curl -L -o lifeman/lifeman https://github.com/mrhappynice/lifeman/releases/download/v0.2/lifeman-termux && chmod +x lifeman/lifeman",
+    "url": "https://github.com/mrhappynice/lifeman"
+  },
+  {
+    "id": "04b2f014-c218-435b-b025-8262f23ce35c",
+    "name": "Start Life Manager",
+    "description": "run the lifeman app",
+    "command": "( cd ./lifeman && nohup ./lifeman >/tmp/lifeman.log 2>&1 < /dev/null & )",
+    "url": "http://localhost:3030"
+  },
   {
     "id": "3325f69f-d6de-4f0b-85d0-73fc854760b8",
     "name": "__TEMP_CMD__",
