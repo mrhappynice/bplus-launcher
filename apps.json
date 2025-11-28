@@ -38,7 +38,7 @@
     "id": "7bc46e25-cd31-4bde-846c-63ca9493e723",
     "name": "Gnome Calculator",
     "description": "open calc #util #host-apps",
-    "command": "gnome-calculator",
+    "command": "( nohup gnome-calculator >/tmp/gclac.log 2>&1 < /dev/null & )",
     "url": "http://localhost"
   },
   {
@@ -51,7 +51,7 @@
   {
     "id": "06cf6259-3015-41d1-b643-bfe3e544f6cf",
     "name": "🖧 Get bplus🤷‍♂️️ apps",
-    "description": "grab the bplus series of apps, currently* Cnidarian, streamdlrs-gui, and searchrs(set your keys in .env) #bplus #mhn",
+    "description": "grab the bplus series of apps, currently* Cnidarian, streamdlrs-gui, and searchrs(set your keys in .env) #bplus #mhn #install",
     "command": "git clone https://github.com/mrhappynice/bplus-searchrs.git && git clone https://github.com/mrhappynice/bplus-streamdlrs-gui.git && curl -L -o bplus-searchrs/bplus-searchrs https://github.com/mrhappynice/bplus-searchrs/releases/download/v0.4.1.2/bplus-searchrs && curl -L -o bplus-streamdlrs-gui/bplus-streamdlrs-gui https://github.com/mrhappynice/bplus-streamdlrs-gui/releases/download/working/bplus-streamdlrs-gui && chmod +x bplus-searchrs/bplus-searchrs && chmod +x bplus-streamdlrs-gui/bplus-streamdlrs-gui && curl -L -o bplus-streamdlrs-gui/yt-dlp_linux https://github.com/yt-dlp/yt-dlp/releases/download/2025.11.12/yt-dlp_linux && chmod +x bplus-streamdlrs-gui/yt-dlp_linux && docker pull mrhappynice/cnidarian:latest",
     "url": "http://localhost"
   },
@@ -74,6 +74,41 @@
     "name": "bplus running apps",
     "description": "list running apps #bplus #mhn",
     "command": "ps -eo pid,comm | grep bplus && echo \"\" && echo \"Type: pkill <bplus-suffix> ex. pkill searchrs to stop bplus-searchrs\"",
+    "url": "http://localhost"
+  },
+  {
+    "id": "6da7bdc6-2952-4e32-a888-06e847f2ff5d",
+    "name": "🖧 Get static llama.cpp vulkan build ",
+    "description": "llama-server vulkan static build for linux #llama #install",
+    "command": "curl -L -o llama.zip https://github.com/mrhappynice/build-llamas/releases/download/current/llama-static-vulkan.zip && unzip llama.zip ",
+    "url": "http://localhost"
+  },
+  {
+    "id": "937d730a-64b2-4a97-a7b8-aedbd3517a39",
+    "name": "🦙 Run model with llama.cpp server ",
+    "description": "pick your hf model with -hf or local dir with -m #llama",
+    "command": "( nohup  ./llama-server -hf unsloth/Qwen3-0.6B-GGUF:Q8_0 -ngl 99 -c 3888 --port 1234 > llamaserver.log 2>&1 < /dev/null & )",
+    "url": "http://localhost:1234"
+  },
+  {
+    "id": "6e9ba7c0-ad85-48b8-a51c-f123c6c60367",
+    "name": "🖧 Get Life Manager",
+    "description": "dl lifeman app from mhn github, #install #life",
+    "command": "git clone https://github.com/mrhappynice/lifeman.git && curl -L -o lifeman/lifeman https://github.com/mrhappynice/lifeman/releases/download/v0.2/lifeman && chmod +x lifeman/lifeman",
+    "url": "https://github.com/mrhappynice/lifeman"
+  },
+  {
+    "id": "04b2f014-c218-435b-b025-8262f23ce35c",
+    "name": "Start Life Manager",
+    "description": "run the lifeman app",
+    "command": "( cd ./lifeman && nohup ./lifeman >/tmp/lifeman.log 2>&1 < /dev/null & )",
+    "url": "http://localhost:3030"
+  },
+  {
+    "id": "e313ac32-1969-4b6d-b744-5734e1038bd0",
+    "name": "__TEMP_CMD__",
+    "description": "Ad-hoc command",
+    "command": "pkill bplus",
     "url": "http://localhost"
   }
 ]
