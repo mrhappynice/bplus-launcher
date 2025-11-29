@@ -1,0 +1,114 @@
+[
+  {
+    "id": "e1944bf8-c786-4b94-b8ed-b4b02c1a48c0",
+    "name": "Kill All Dockers",
+    "description": "kill em all!!! #docker",
+    "command": "docker stop $(docker ps -q)",
+    "url": "http://localhost"
+  },
+  {
+    "id": "5ab11ad5-7572-4614-80f4-709256894539",
+    "name": "List Running Dockers",
+    "description": "listed em #docker",
+    "command": "docker ps",
+    "url": "http://localhost"
+  },
+  {
+    "id": "9ed0d555-ad78-4e4f-bc59-3abfb8a2186a",
+    "name": "Docker Hello World!",
+    "description": "the docker hello world image #docker",
+    "command": "docker run hello-world",
+    "url": "http://localhost"
+  },
+  {
+    "id": "2fa3018b-c6db-483a-81c0-2c011f692746",
+    "name": "Listening Ports",
+    "description": "running on system #util",
+    "command": "ss -tulnp | grep LISTEN",
+    "url": "http://localhost"
+  },
+  {
+    "id": "0234aa45-a697-4d25-9c81-a9b0ae1a54f8",
+    "name": "Memory Hungry",
+    "description": "lists memory hungry processses #util",
+    "command": "ps -eo pid,comm,%mem --sort=-%mem | head",
+    "url": "http://localhost"
+  },
+  {
+    "id": "7bc46e25-cd31-4bde-846c-63ca9493e723",
+    "name": "Gnome Calculator",
+    "description": "open calc #util #host-apps",
+    "command": "( nohup gnome-calculator >/tmp/gclac.log 2>&1 < /dev/null & )",
+    "url": "http://localhost"
+  },
+  {
+    "id": "cda0d896-c563-47b9-b9af-f96ae9746fcc",
+    "name": "Cnidarian",
+    "description": "C compiled WASM with HTML UI and Docker runner #C #WASM #mhn",
+    "command": "docker run -d --rm --name cnidarian-cont -p 8080:80 mrhappynice/cnidarian:latest",
+    "url": "http://localhost:8080"
+  },
+  {
+    "id": "06cf6259-3015-41d1-b643-bfe3e544f6cf",
+    "name": "🖧 Get bplus🤷‍♂️️ apps",
+    "description": "grab the bplus series of apps, currently* Cnidarian, streamdlrs-gui, and searchrs(set your keys in .env) #bplus #mhn #install",
+    "command": "placeholder",
+    "url": "http://localhost"
+  },
+  {
+    "id": "a759e5bb-da34-4417-874c-50b59d3f390e",
+    "name": "▶️ Launch bplus-streamdlrs-gui",
+    "description": "download streaming media from... platforms end task with: taskkill /IM bplus-streamdlrs.exe, saved ending: -WindowStyle Hidden  #bplus #mhn",
+    "command": "cmd /c start powershell -Command Start-Process bplus-streamdlrs-gui\\bplus-streamdlrs-gui.exe -WorkingDirectory bplus-streamdlrs-gui -RedirectStandardOutput C:\\Temp\\bplus-streamdlrs-gui.log -RedirectStandardError C:\\Temp\\bplus-streamdlrs-gui.err ",
+    "url": "http://localhost:3000"
+  },
+  {
+    "id": "40c351c2-740b-4bf6-8bc8-77cdeeec3b25",
+    "name": "🔎 Launch bplus-searchrs",
+    "description": "LLM powered web search, built-in and connection to SearXNG end task with: taskkill /IM bplus-searchrs.exe, saved ending: -WindowStyle Hidden  #bplus #mhn",
+    "command": "cmd /c start powershell -Command Start-Process bplus-searchrs\\bplus-searchrs.exe -WorkingDirectory bplus-searchrs -RedirectStandardOutput C:\\Temp\\bplus-searchrs.log -RedirectStandardError C:\\Temp\\bplus-searchrs.err ",
+    "url": "http://localhost:3001"
+  },
+  {
+    "id": "b7d06a42-40fb-4ef4-a45a-cb17c2763c93",
+    "name": "bplus running apps",
+    "description": "list running apps #bplus #mhn",
+    "command": "ps -eo pid,comm | grep bplus && echo \"\" && echo \"Type: pkill <bplus-suffix> ex. pkill searchrs to stop bplus-searchrs\"",
+    "url": "http://localhost"
+  },
+  {
+    "id": "6da7bdc6-2952-4e32-a888-06e847f2ff5d",
+    "name": "🖧 Get static llama.cpp vulkan build ",
+    "description": "llama-server vulkan static build for linux #llama #install",
+    "command": "curl -L -o llama.zip https://github.com/mrhappynice/build-llamas/releases/download/current/llama-static-vulkan.zip && unzip llama.zip ",
+    "url": "http://localhost"
+  },
+  {
+    "id": "937d730a-64b2-4a97-a7b8-aedbd3517a39",
+    "name": "🦙 Run model with llama.cpp server ",
+    "description": "pick your hf model with -hf or local dir with -m #llama",
+    "command": "( nohup  ./llama-server -hf unsloth/Qwen3-0.6B-GGUF:Q8_0 -ngl 99 -c 3888 --port 1234 > llamaserver.log 2>&1 < /dev/null & )",
+    "url": "http://localhost:1234"
+  },
+  {
+    "id": "6e9ba7c0-ad85-48b8-a51c-f123c6c60367",
+    "name": "🖧 Get Life Manager",
+    "description": "dl lifeman app from mhn github, #install #life",
+    "command": "git clone https://github.com/mrhappynice/lifeman.git && curl -L -o lifeman/lifeman https://github.com/mrhappynice/lifeman/releases/download/v0.2/lifeman && chmod +x lifeman/lifeman",
+    "url": "https://github.com/mrhappynice/lifeman"
+  },
+  {
+    "id": "04b2f014-c218-435b-b025-8262f23ce35c",
+    "name": "Start Life Manager",
+    "description": "run the lifeman app, end task with: taskkill /IM lifeman.exe, saved ending: -WindowStyle Hidden#life",
+    "command": "cmd /c start powershell -Command Start-Process lifeman\\lifeman.exe -WorkingDirectory lifeman -RedirectStandardOutput C:\\Temp\\lifeman.log -RedirectStandardError C:\\Temp\\lifeman.err ",
+    "url": "http://localhost:3030"
+  },
+  {
+    "id": "e313ac32-1969-4b6d-b744-5734e1038bd0",
+    "name": "__TEMP_CMD__",
+    "description": "Ad-hoc command",
+    "command": "pkill bplus",
+    "url": "http://localhost"
+  }
+]
