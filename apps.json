@@ -103,12 +103,5 @@
     "description": "run the lifeman app",
     "command": "( cd ./lifeman && nohup ./lifeman >/tmp/lifeman.log 2>&1 < /dev/null & )",
     "url": "http://localhost:3030"
-  },
-  {
-    "id": "e313ac32-1969-4b6d-b744-5734e1038bd0",
-    "name": "__TEMP_CMD__",
-    "description": "Ad-hoc command",
-    "command": "pkill bplus",
-    "url": "http://localhost"
   }
 ]
