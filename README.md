@@ -3,7 +3,7 @@
 A simple, self-hosted desktop app launcher built with Rust and vanilla JS. 
 It allows you to configure commands (like Docker containers or shell scripts) and provides a UI to launch them and open their web interfaces. Plus, useful terminal mesasges.
 
-Launch cards for bplus🤷‍♂️️ series of apps, docker containers, and other system utilities. Install, launch, manage WIP* added: [Cnidarian](https://github.com/mrhappynice/cnidarian), [streamdlrs-gui](https://github.com/mrhappynice/bplus-streamdlrs-gui), and [searchrs](https://github.com/mrhappynice/bplus-searchrs) cards
+Launch cards for bplus🤷‍♂️️ series of apps, docker containers, and other system utilities. Install, launch, manage WIP* added: [Cnidarian](https://github.com/mrhappynice/cnidarian), [streamdlrs-gui](https://github.com/mrhappynice/bplus-streamdlrs-gui), and [searchrs](https://github.com/mrhappynice/bplus-searchrs) cards *Life Manager added [lifeman](https://github.com/mrhappynice/lifeman)
 
 ## Quick Start🏁
 *Assumes git, docker, ffmpeg, unzip, general utilities installed. For termux pip install yt-dlp for usage. Also pkg install llama-cpp. Adding to json file(working on full termux auto-install script) linux binary compiled for glibc 2.35+ (ex. Ubuntu 22+) 
