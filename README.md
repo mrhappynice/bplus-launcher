@@ -17,6 +17,7 @@ Launch cards for bplus🤷‍♂️️ series of apps, docker containers, and ot
 - ```sh
   curl -fsSL https://raw.githubusercontent.com/mrhappynice/bplus-launcher/main/termux-install.sh | bash
   ```
+- No windows specific json file yet(modify availble or create your own), .exe file in Releases. (how to detach from terminal like linux command?, tried single line powershell through cmd command. no quotes to avoid issues. freezes launcher until app close. trying to fix without rs rewrite for win)
 
 ## Prerequisites
 
