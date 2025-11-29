@@ -35,27 +35,6 @@
     "url": "http://localhost"
   },
   {
-    "id": "91766084-4e47-49b9-9e81-ca97b3331afe",
-    "name": "__TEMP_CMD__",
-    "description": "Ad-hoc command",
-    "command": "pkill bplus",
-    "url": "http://localhost"
-  },
-  {
-    "id": "7be3c710-e7eb-4c42-a37d-8a3cbe841c45",
-    "name": "__TEMP_CMD__",
-    "description": "Ad-hoc command",
-    "command": "pkill bplus",
-    "url": "http://localhost"
-  },
-  {
-    "id": "d59a7b16-c329-42ea-82cb-2ffab3a1438d",
-    "name": "__TEMP_CMD__",
-    "description": "Ad-hoc command",
-    "command": "pkill bplus",
-    "url": "http://localhost"
-  },
-  {
     "id": "25f5799b-233c-41c6-9f5b-d1d9a6afc4c9",
     "name": "Install llama.cpp [termux]",
     "description": "you may install llama-cpp-backend-x, x can = vulkan or opencl",
@@ -82,12 +61,5 @@
     "description": "run the lifeman app",
     "command": "( cd ./lifeman && nohup ./lifeman >/tmp/lifeman.log 2>&1 < /dev/null & )",
     "url": "http://localhost:3030"
-  },
-  {
-    "id": "3325f69f-d6de-4f0b-85d0-73fc854760b8",
-    "name": "__TEMP_CMD__",
-    "description": "Ad-hoc command",
-    "command": "pkill bplus",
-    "url": "http://localhost"
   }
 ]
